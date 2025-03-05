@@ -1,12 +1,22 @@
-for file in /path/to/folder/*.json; do
+for file in C:\Job\data_unzip; do
   bq load --source_format=NEWLINE_DELIMITED_JSON \
     --autodetect \
-    my_dataset.my_table \
+    my_dataset.raw_data \
     "$file"
 done
 
 
-for file in /path/to/folder/*.json; do
+
+--- You can config schema of raw data table in schema.json
+Ex:
+[
+  {"name": "id", "type": "INTEGER", "mode": "REQUIRED"},
+  {"name": "name", "type": "STRING", "mode": "NULLABLE"},
+  {"name": "age", "type": "INTEGER", "mode": "NULLABLE"},
+  {"name": "created_at", "type": "TIMESTAMP", "mode": "NULLABLE"}
+]
+
+for file in C:\Job\data_unzip; do
   bq load --source_format=NEWLINE_DELIMITED_JSON \
     --autodetect \
     my_dataset.my_table \
