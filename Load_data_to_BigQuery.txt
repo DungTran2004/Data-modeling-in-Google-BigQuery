@@ -1,0 +1,15 @@
+for file in /path/to/folder/*.json; do
+  bq load --source_format=NEWLINE_DELIMITED_JSON \
+    --autodetect \
+    my_dataset.my_table \
+    "$file"
+done
+
+
+for file in /path/to/folder/*.json; do
+  bq load --source_format=NEWLINE_DELIMITED_JSON \
+    --autodetect \
+    my_dataset.my_table \
+    "$file"\
+	schema.json
+done
